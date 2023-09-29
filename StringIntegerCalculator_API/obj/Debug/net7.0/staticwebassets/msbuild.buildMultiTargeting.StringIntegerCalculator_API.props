@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\StringIntegerCalculator_API.props" />
+</Project>
