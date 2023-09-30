@@ -1,4 +1,9 @@
 
+using StringCalculator.Application.Interfaces;
+using StringCalculator.Application.Services;
+using StringCalculator.Core.Interfaces;
+using StringCalculator.Core.Specifications;
+
 namespace StringIntegerCalculator_API
 {
     public class Program
@@ -10,6 +15,8 @@ namespace StringIntegerCalculator_API
             // Add services to the container.
 
             builder.Services.AddControllers();
+            builder.Services.AddScoped<IMathExpressionService, MathExpressionService>();
+            builder.Services.AddScoped<IMathExpressionEvaluator, MathExpressionEvaluator>();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();

@@ -11,16 +11,5 @@ namespace StringCalculator.Core.Interfaces
     {
         double Evaluate(string expression);
     }
-    public class MathExpressionEvaluator : IMathExpressionEvaluator
-    {
-        public double Evaluate(string expression)
-        {
-            // Implement the expression evaluation logic here
-            DataTable table = new DataTable();
-            table.Columns.Add("expression", typeof(string), expression);
-            DataRow row = table.NewRow();
-            table.Rows.Add(row);
-            return double.Parse((string)row["expression"]);
-        }
-    }
+   
 }
