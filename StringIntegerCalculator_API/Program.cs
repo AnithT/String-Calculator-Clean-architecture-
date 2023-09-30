@@ -3,6 +3,7 @@ using StringCalculator.Application.Interfaces;
 using StringCalculator.Application.Services;
 using StringCalculator.Core.Interfaces;
 using StringCalculator.Core.Specifications;
+using StringIntegerCalculator_API.ExceptionMiddlewareHandler;
 
 namespace StringIntegerCalculator_API
 {
@@ -22,8 +23,7 @@ namespace StringIntegerCalculator_API
             builder.Services.AddSwaggerGen();
 
             var app = builder.Build();
-
-            // Configure the HTTP request pipeline.
+            app.UseMiddleware<ExceptionMiddleware>();
             if (app.Environment.IsDevelopment())
             {
                 app.UseSwagger();

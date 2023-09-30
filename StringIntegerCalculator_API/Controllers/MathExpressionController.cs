@@ -17,8 +17,7 @@ namespace StringIntegerCalculator_API.Controllers
         [HttpGet]
         public IActionResult Evaluate(string expression)
         {
-            try
-            {
+           
                 if (string.IsNullOrEmpty(expression))
                 {
                     return BadRequest("Expression is empty or null.");
@@ -27,11 +26,7 @@ namespace StringIntegerCalculator_API.Controllers
                 double result = _expressionService.EvaluateExpression(expression);
                 var response = new { expression, result };
                 return Ok(response);
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, $"An error occurred: {ex.Message}");
-            }
+           
         }
     }
 }
