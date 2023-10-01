@@ -1,4 +1,5 @@
 
+using Serilog;
 using StringCalculator.Application.Interfaces;
 using StringCalculator.Application.Services;
 using StringCalculator.Core.Interfaces;
@@ -14,7 +15,15 @@ namespace StringIntegerCalculator_API
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
+            builder.Services.AddLogging(loggingBuilder =>
+            {
+                // Set up Serilog
+                Log.Logger = new LoggerConfiguration()
+                    .WriteTo.File("C:/UlCodingTask/Logs/app.log") // Specify the log file name
+                    .CreateLogger();
 
+                loggingBuilder.AddSerilog();
+            });
             builder.Services.AddControllers();
             builder.Services.AddScoped<IMathExpressionService, MathExpressionService>();
             builder.Services.AddScoped<IMathExpressionEvaluator, MathExpressionEvaluator>();

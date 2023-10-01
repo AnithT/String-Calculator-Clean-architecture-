@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using StringCalculator.Application.Interfaces;
+using StringIntegerCalculator_API.Exceptions;
+using StringIntegerCalculator_API.Extensions;
 
 namespace StringIntegerCalculator_API.Controllers
 {
@@ -17,13 +19,14 @@ namespace StringIntegerCalculator_API.Controllers
         [HttpGet]
         public IActionResult Evaluate(string expression)
         {
-           
-                if (string.IsNullOrEmpty(expression))
-                {
-                    return BadRequest("Expression is empty or null.");
-                }
 
-                double result = _expressionService.EvaluateExpression(expression);
+
+            if (!expression.IsValidMathExpression())
+            {
+                return BadRequest(new APIResponce(402));
+            }
+
+            double result = _expressionService.EvaluateExpression(expression);
                 var response = new { expression, result };
                 return Ok(response);
            
