@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StringCalculator.Core", "St
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StringCalculator.Application", "StringCalculator.Application\StringCalculator.Application.csproj", "{97837569-3FCE-49B5-898F-486DB28ECA6C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StringIntegerCalculator_UnitTest", "StringIntegerCalculator_UnitTest\StringIntegerCalculator_UnitTest.csproj", "{2672BC09-A6DD-4744-9AD8-A96EBC6FF82A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{97837569-3FCE-49B5-898F-486DB28ECA6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{97837569-3FCE-49B5-898F-486DB28ECA6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{97837569-3FCE-49B5-898F-486DB28ECA6C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2672BC09-A6DD-4744-9AD8-A96EBC6FF82A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2672BC09-A6DD-4744-9AD8-A96EBC6FF82A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2672BC09-A6DD-4744-9AD8-A96EBC6FF82A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2672BC09-A6DD-4744-9AD8-A96EBC6FF82A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
