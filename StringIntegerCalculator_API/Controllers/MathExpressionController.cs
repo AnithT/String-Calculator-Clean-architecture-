@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using StringCalculator.Application.Interfaces;
 using StringIntegerCalculator_API.Exceptions;
 using StringIntegerCalculator_API.Extensions;
@@ -15,7 +16,7 @@ namespace StringIntegerCalculator_API.Controllers
         {
             _expressionService = expressionService;
         }
-
+        [Authorize]
         [HttpGet]
         public IActionResult Evaluate(string expression)
         {

@@ -1,10 +1,13 @@
 
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 using Serilog;
 using StringCalculator.Application.Interfaces;
 using StringCalculator.Application.Services;
 using StringCalculator.Core.Interfaces;
 using StringCalculator.Core.Specifications;
 using StringIntegerCalculator_API.ExceptionMiddlewareHandler;
+using System.Text;
 
 namespace StringIntegerCalculator_API
 {
@@ -24,7 +27,26 @@ namespace StringIntegerCalculator_API
 
                 loggingBuilder.AddSerilog();
             });
+            // Added JWT Authentication and Authorization
+            builder.Services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+.AddJwtBearer(options =>
+{
+    options.RequireHttpsMetadata = false; 
+    options.SaveToken = true;
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(builder.Configuration.GetValue<string>("Jwt:Key"))), // Replace with your secret key
+        ValidateIssuer = false,
+        ValidateAudience = false,
+    };
+});
             builder.Services.AddControllers();
+            builder.Services.AddScoped<ITokenService, TokenService>();
             builder.Services.AddScoped<IMathExpressionService, MathExpressionService>();
             builder.Services.AddScoped<IMathExpressionEvaluator, MathExpressionEvaluator>();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
