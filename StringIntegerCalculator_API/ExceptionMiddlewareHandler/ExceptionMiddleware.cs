@@ -1,7 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Hosting;
+﻿
 using StringIntegerCalculator_API.Exceptions;
-using System.Data;
 using System.Net;
 using System.Text.Json;
 

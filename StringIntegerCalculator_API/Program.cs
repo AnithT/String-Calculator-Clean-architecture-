@@ -22,7 +22,7 @@ namespace StringIntegerCalculator_API
             {
                 // Set up Serilog
                 Log.Logger = new LoggerConfiguration()
-                    .WriteTo.File("C:/UlCodingTask/Logs/app.log") // Specify the log file name
+                    .WriteTo.File("C:/UlCodingTask/Logs/app.log")
                     .CreateLogger();
 
                 loggingBuilder.AddSerilog();
